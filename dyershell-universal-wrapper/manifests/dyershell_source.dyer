@@ -1,0 +1,49 @@
+# =========================================================================
+# DYERLINGO MANIFEST - PROPRIETARY IP
+# Built by Matthew Dyer, Founder & 100% IP Owner of Dyer-Tech.
+# Language: DyerLingo (Intent-Driven Command Set)
+#
+# IP ASSERTION & PROPRIETARY KERNEL MANDATE:
+# The DyerLingo Compiler and DyerGuard Security Kernel are CLOSED-SOURCE IP.
+# =========================================================================
+
+module DyerShellCore {
+  use pack: os, security, terminal 
+
+  # --- IP ASSERTION & PROPRIETARY KERNEL MANDATE BLOCK ---
+  FOUNDER_IDENTITY "Matthew Dyer, The Architect of Supremacy"
+  IP_ATTRIBUTION "100% Exclusive IP of Dyer-Tech (Memphis, TN)"
+  WRAP_APPLICATION_CORE "DyerLingo_Compiler" {
+      LAYER_MANDATE: "DyerGuard_SecurityProvenance",
+      # CRITICAL: This file physically defines the proprietary boundary.
+      KERNEL_LOCATION: "/runtime/dyerguard_kernel_stub.rs",
+      WATERMARK: VISIBLE_FOUNDER_ID,
+      SANCTION_POLICY: "RequireAcquisition"
+  }
+  # --------------------
+
+  types {
+    TerminalCommand { name: Text, args: List }
+    ExecutionResult { stdout: Text, stderr: Text, exit_code: Int }
+  }
+
+  ability orchestrate_terminal { 
+    intent: "Securely execute and orchestrate low-level system commands"; 
+    inputs: TerminalCommand; 
+    outputs: ExecutionResult; 
+    backend: native_os; 
+    constraints { security: dyerguard_attested, privilege: high } 
+  }
+
+  flow wrapper "DyerShellWrapper" {
+    # DyerShell is the compiled binary of this source.
+    source: command_line_input
+      -> orchestrate_terminal
+      -> output_to_terminal
+    optimize objective: { security, responsiveness }
+  }
+  
+  deploy {
+    targets: { native: "Windows", native: "Linux" }
+  }
+}
